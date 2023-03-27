@@ -1,0 +1,40 @@
+.image {
+    position: relative;
+    overflow: hidden;
+}
+
+.mainImage {
+    z-index: 1;
+}
+
+.secondImage {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    display: none;
+}
+
+.image:hover .secondImage {
+    opacity: 1;
+    display: block;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.prices {
+    display: flex;
+    gap: 20px;
+    font-weight: 500;
+    font-size: large;
+}
+
+.oldPrice {
+    color: grey;
+    text-decoration: line-through;
+}
+
+a {
+    text-decoration: none !important;
+    color: black !important;
+}

@@ -1,0 +1,15 @@
+.top h2 {
+    display: flex;
+    justify-content: left;
+}
+
+.top-item, .top-item div {
+    display: flex;
+    justify-content: left;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}

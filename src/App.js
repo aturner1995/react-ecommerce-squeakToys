@@ -2,8 +2,6 @@ import './App.css';
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
-  Outlet,
 } from "react-router-dom";
 import Home from './pages/Home/Home';
 import Product from './pages/Product/Product';
@@ -12,6 +10,7 @@ import Navbar from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
 import Hero from './components/Hero/Hero';
 import FeaturedProducts from './components/FeaturedProducts/FeaturedProducts';
+import Categories from './components/Categories/Categories';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Layout = () => {
@@ -19,8 +18,9 @@ const Layout = () => {
     <div className='app'>
       <Navbar />
       <Hero />
-      <FeaturedProducts />
-      <Outlet />
+      <FeaturedProducts type={'Featured'}/>
+      <Categories />
+      <FeaturedProducts type={'Trending'}/>
       <Footer />
     </div>
   )

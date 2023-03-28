@@ -1,6 +1,8 @@
 import React from 'react';
 import './FeaturedProducts.css';
 import ProductCard from '../Card/ProductCard';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const FeaturedProducts = ({type}) => {
     const data = [
@@ -24,34 +26,36 @@ const FeaturedProducts = ({type}) => {
         },
         {
             id: 3,
-            img: '',
-            img2: '',
-            title: 'Big Chew Toy',
+            img: 'https://www.petvalu.ca/ccstore/v1/images/?source=/file/v7637043482866377324/products/SCM00263CA.1.jpg&height=475&width=475',
+            img2: 'https://www.petvalu.ca/ccstore/v1/images/?source=/file/v2070555295295971252/products/SCM00263CA.3.jpg&height=475&width=475',
+            title: 'Kong Chew Toy',
             isNew: true,
             oldPrice: 49.99,
             newPrice: 39.99
         },
         {
             id: 4,
-            img: '',
-            img2: '',
-            title: '',
+            img: 'https://i5.walmartimages.com/asr/a7f0a82d-a7f8-48f3-b60b-9b0fa772066f.7a18faacb11e4092a93fdca66a634a04.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF',
+            img2: 'https://i5.walmartimages.com/asr/55aaea4c-0e17-4954-aa14-9907c9c5768b.152bc8126a195cf679a5f139b1e1f23c.jpeg',
+            title: 'Jumbo Koala Dog Toy',
             isNew: true,
             oldPrice: 49.99,
             newPrice: 39.99
         },
     ];
   return (
-    <div className='featuredProducts'>
+    <div className='featuredProducts my-5'>
         <div className="top">
-            <h1>{type}Featured Products</h1>
+            <h1>{type} Products</h1>
         </div>
-        <div className="bottom">
+        <Row className="bottom">
             {data.map(item => (
-                <ProductCard item={item} key={item.id}/>
+                <Col className='product-card text-center'>
+                     <ProductCard item={item} key={item.id}/>
+                </Col>
             )
             )}            
-        </div>
+        </Row>
     </div>
   )
 }

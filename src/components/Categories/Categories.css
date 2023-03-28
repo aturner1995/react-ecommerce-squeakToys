@@ -1,0 +1,20 @@
+.category {
+    position: relative;
+}
+
+.cat-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.prime-custom {
+    background-color: #dc882d !important;
+    border: #dc882d !important;
+}
+
+.prime-custom:hover {
+    background-color: #d67916 !important;
+    border: #a1621e !important;
+}

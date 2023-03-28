@@ -25,7 +25,7 @@ const Navigation = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="#" className='me-3'>
-                <Button href='#' className="d-flex align-items-center mt-0 prime-custom">Shop Now</Button>
+                <Button href='#' className="d-flex align-items-center mt-0 prime-custom text-white">Shop Now</Button>
               </Nav.Link>
               <Nav.Link href="#" className='me-3'>
                 <SearchIcon />

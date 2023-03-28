@@ -22,6 +22,11 @@
     transition: opacity 0.3s ease-in-out;
 }
 
+.image:hover .mainImage {
+    opacity: 0;
+    display: block;
+}
+
 .prices {
     display: flex;
     gap: 20px;

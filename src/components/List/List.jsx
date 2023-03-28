@@ -46,7 +46,7 @@ const List = () => {
     <div>
         <Row>
             {data.map(item => (
-                <Col className='product-card my-2' md={3}>
+                <Col className='product-card my-2 text-center' >
                      <ProductCard item={item} key={item.id}/>
                 </Col>
             )

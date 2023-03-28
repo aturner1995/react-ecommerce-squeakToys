@@ -1,0 +1,20 @@
+.images {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 100px;
+    gap: 20px;
+}
+
+/* .mainImage {
+    display: flex;
+    height: 500px;
+} */
+
+.left {
+    display: flex;
+    gap: 20px;
+}
+
+

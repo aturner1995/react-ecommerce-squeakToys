@@ -12,8 +12,9 @@ const Products = () => {
 
   return (
     <Row className='products mx-0'>
+      <Image src='/images/hero.jpeg' alt='Dog playing with toy' fluid className='top-img'/>
       <Col sm={2}>
-        <Stack className='left'>
+        <Stack className='left my-4'>
           <Stack className='filterItem'>
             <h3>Product Categories</h3>
             <div className="inputItem">
@@ -48,8 +49,7 @@ const Products = () => {
           </div>
         </Stack>
       </Col>
-      <Col className='right' sm={10}>
-      <Image src='/images/hero.jpeg' alt='Dog playing with toy' fluid className='top-img'/>
+      <Col className='right my-4' sm={10}>
       <List catId={catId} maxPrice={maxPrice} sort={sort}/>
       </Col>
     </Row>

@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Layout = () => {
   return (
-    <div className='app'>
+    <div className='app '>
       <Navbar />
       <Outlet />
       <Footer />
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container-fluid">
       <RouterProvider router={router} />
     </div>
   );

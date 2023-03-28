@@ -7,13 +7,17 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
+import Cart from '../Cart/Cart';
 
 const Navigation = () => {
+  const [open,setOpen] = useState(false);
+
   return (
     <>
       <Navbar bg="white" expand="lg" sticky='top'>
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/">
             <img
               src="/images/logo.png"
               height='50'
@@ -33,7 +37,7 @@ const Navigation = () => {
               <Nav.Link href="#" className='me-3'>
                 <PersonOutlineOutlinedIcon />
               </Nav.Link>
-              <Nav.Link href="#" className='cart-icon'>
+              <Nav.Link href="#" className='cart-icon' onClick={() => setOpen(!open)}>
                 <ShoppingCartOutlinedIcon />
                 <span className='cart-items'>0</span>
               </Nav.Link>
@@ -41,6 +45,7 @@ const Navigation = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      {open && <Cart/>}
     </>
   );
 }

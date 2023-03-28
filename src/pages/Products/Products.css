@@ -1,0 +1,10 @@
+.products {
+    position: relative;
+}
+
+.left {
+    position: sticky;
+    display: flex;
+    top: 100px;
+    text-align: left;
+}

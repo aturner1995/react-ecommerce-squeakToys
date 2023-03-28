@@ -1,9 +1,9 @@
 import React from 'react';
-import './FeaturedProducts.css';
+import './List.css';
 import ProductCard from '../Card/ProductCard';
 import {Row , Col } from 'react-bootstrap';
 
-const FeaturedProducts = ({type}) => {
+const List = () => {
     const data = [
         {
             id: 1,
@@ -43,13 +43,10 @@ const FeaturedProducts = ({type}) => {
         },
     ];
   return (
-    <div className='featuredProducts my-5'>
-        <div className="top">
-            <h1>{type} Products</h1>
-        </div>
-        <Row className="bottom">
+    <div>
+        <Row>
             {data.map(item => (
-                <Col className='product-card text-center'>
+                <Col className='product-card my-2' md={3}>
                      <ProductCard item={item} key={item.id}/>
                 </Col>
             )
@@ -59,4 +56,4 @@ const FeaturedProducts = ({type}) => {
   )
 }
 
-export default FeaturedProducts
+export default List

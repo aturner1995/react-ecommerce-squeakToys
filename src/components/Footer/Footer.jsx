@@ -9,7 +9,7 @@ import './Footer.css'
 
 const Footer = () => {
   return (
-    <Container>
+    <Container className='mx-0'>
       <Row className='top'>
         <Col>
           <h2>Shop Toys</h2>

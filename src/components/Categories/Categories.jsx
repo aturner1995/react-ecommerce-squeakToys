@@ -4,10 +4,10 @@ import './Categories.css'
 
 const Categories = () => {
     return (
-        <Row>
+        <Row className='cat-row mx-0'>
             <Col lg={4} >
                 <div className='category my-2'>
-                    <Image src='/images/cat1.jpg' alt="Large Dogs" fluid />
+                    <Image src='/images/cat1.jpg' alt="Large Dogs" fluid className='cat-img'/>
                     <Button className='cat-btn prime-custom text-white' href='#' size='lg'>
                         LARGE DOG TOYS
                     </Button>
@@ -15,7 +15,7 @@ const Categories = () => {
             </Col>
             <Col lg={4}>
                 <div className='category my-2'>
-                    <Image src='/images/cat2.jpg' alt="Med Dogs" fluid />
+                    <Image src='/images/cat2.jpg' alt="Med Dogs" fluid className='cat-img'/>
                     <Button className='cat-btn prime-custom text-white' href='#' size='lg'>
                         MEDIUM DOG TOYS
                     </Button>
@@ -23,7 +23,7 @@ const Categories = () => {
             </Col>
             <Col lg={4}> 
                 <div className='category my-2'>
-                    <Image src='/images/cat3.jpg' alt="Small Dogs" fluid />
+                    <Image src='/images/cat3.jpg' alt="Small Dogs" fluid className='cat-img'/>
                     <Button className='cat-btn prime-custom text-white' href='#' size='lg'>
                         SMALL DOG TOYS
                     </Button>

@@ -18,3 +18,7 @@
     background-color: #d67916 !important;
     border: #a1621e !important;
 }
+
+.cat-img {
+    max-height: 75vh;
+}

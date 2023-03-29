@@ -10,8 +10,8 @@
     color: white;
     background-color: #dc882d;
     position: absolute;
-    right: 1px;
-    top: -1px;
+    right: -8px;
+    top: -8px;
     display: flex;
     align-items: center;
     justify-content: center;

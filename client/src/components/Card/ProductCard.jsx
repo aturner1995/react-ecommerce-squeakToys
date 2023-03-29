@@ -13,7 +13,7 @@ const ProductCard = ({ item }) => {
           <Card.Img variant="top" src={item.img2} className='secondImage' />
         </div>
         <Card.Body>
-          <Card.Title>{item.title}</Card.Title>
+          <Card.Title>{item.attributes.title}</Card.Title>
           <div className="prices">
             <Card.Text className='oldPrice'>
               {item.oldPrice}

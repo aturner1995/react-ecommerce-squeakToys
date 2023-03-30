@@ -6,10 +6,15 @@ import useFetch from "../../Hooks/useFetch";
 
 const List = ({ catId, maxPrice, sort, subCat }) => {
     console.log(subCat)
-    const test = subCat.map((item)=> console.log(item));
+    subCat.map((item)=> console.log(item));
+    let url;
+
+    if (subCat) {
+        url = subCat.map(item => `&[filters][sub_categories][id][$eq]=${item}`).join('');
+        console.log(url);
+    }
     const { data, loading } = useFetch(
-        `/products?populate=*&filters[categories][id][$eq]=
-        ${catId}`);
+        '/products?populate=*&[filters][categories]=' + catId + url);
     if (loading) {
         return <p>Loading...</p>;
     }

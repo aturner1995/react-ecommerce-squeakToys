@@ -1,32 +1,39 @@
 import React from 'react';
 import { Row, Col, Image, Button } from 'react-bootstrap';
-import './Categories.css'
+import './Categories.css';
+import { Link } from 'react-router-dom';
 
 const Categories = () => {
     return (
         <Row className='cat-row mx-0'>
             <Col lg={4} >
                 <div className='category my-2'>
+                <Link to={`/products/1`}>
                     <Image src='/images/cat1.jpg' alt="Large Dogs" fluid className='cat-img'/>
-                    <Button className='cat-btn prime-custom text-white' href='#' size='lg'>
+                    <Button className='cat-btn prime-custom text-white' size='lg'>
                         LARGE DOG TOYS
                     </Button>
+                    </Link>
                 </div>
             </Col>
             <Col lg={4}>
                 <div className='category my-2'>
+                <Link to={`/products/2`}>
                     <Image src='/images/cat2.jpg' alt="Med Dogs" fluid className='cat-img'/>
-                    <Button className='cat-btn prime-custom text-white' href='#' size='lg'>
-                        MEDIUM DOG TOYS
+                    <Button className='cat-btn prime-custom text-white' size='lg'>
+                       MEDIUM DOG TOYS
                     </Button>
+                    </Link>
                 </div>
             </Col>
             <Col lg={4}> 
                 <div className='category my-2'>
+                <Link to={`/products/3`}>
                     <Image src='/images/cat3.jpg' alt="Small Dogs" fluid className='cat-img'/>
-                    <Button className='cat-btn prime-custom text-white' href='#' size='lg'>
+                    <Button className='cat-btn prime-custom text-white' size='lg'>
                         SMALL DOG TOYS
                     </Button>
+                    </Link>
                 </div>
             </Col>
         </Row>

@@ -16,10 +16,10 @@ const ProductCard = ({ item }) => {
           <Card.Title>{item.attributes.title}</Card.Title>
           <div className="prices">
             <Card.Text className='oldPrice'>
-              {item.oldPrice}
+              {item.attributes?.oldPrice}
             </Card.Text>
             <Card.Text className='newPrice'>
-              {item.newPrice}
+              {item.attributes?.price}
             </Card.Text>
           </div>
         </Card.Body>

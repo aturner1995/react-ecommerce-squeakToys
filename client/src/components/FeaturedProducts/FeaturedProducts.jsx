@@ -6,7 +6,7 @@ import useFetch from "../../Hooks/useFetch";
 const FeaturedProducts = ({type}) => {
 
   const { data, loading } = useFetch(
-    `/products?populate=*`
+    `/products?populate=*&[filters][type][$eq]=${type}`
   );
 
   console.log(data);
@@ -22,7 +22,7 @@ const FeaturedProducts = ({type}) => {
         </div>
         <Row className="bottom">
             {data.map(item => (
-                <Col className='product-card text-center'>
+                <Col className='product-card my-2 text-center'>
                      <ProductCard item={item} key={item.id}/>
                 </Col>
             )

@@ -9,8 +9,8 @@ const ProductCard = ({ item }) => {
 
       <Card style={{ width: '18rem' }}>
         <div className="image">
-          <Card.Img variant="top" src={item.img} className='mainImage' />
-          <Card.Img variant="top" src={item.img2} className='secondImage' />
+          <Card.Img variant="top" src={process.env.REACT_APP_UPLOAD_URL + item.attributes?.img?.data?.attributes?.url} className='mainImage' />
+          <Card.Img variant="top" src={process.env.REACT_APP_UPLOAD_URL + item.attributes?.img2?.data?.attributes?.url} className='secondImage' />
         </div>
         <Card.Body>
           <Card.Title>{item.attributes.title}</Card.Title>

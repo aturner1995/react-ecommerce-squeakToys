@@ -9,6 +9,8 @@ const FeaturedProducts = ({type}) => {
     `/products?populate=*`
   );
 
+  console.log(data);
+
   if (loading) {
     return <p>Loading...</p>;
   }

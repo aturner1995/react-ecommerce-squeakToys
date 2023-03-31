@@ -5,20 +5,22 @@ import { Row, Col } from 'react-bootstrap';
 import useFetch from "../../Hooks/useFetch";
 
 const List = ({ catId, maxPrice, sort, subCat }) => {
-    console.log(subCat)
     subCat.map((item)=> console.log(item));
-    let url;
+    let filterUrl ='';
+    let sortUrl ='';
 
     if (subCat) {
-        url = subCat.map(item => `&[filters][sub_categories][id][$eq]=${item}`).join('');
-        console.log(url);
+        filterUrl += subCat.map(item => `&[filters][sub_categories][id][$eq]=${item}`).join('');
     }
+    if(sort) {
+        sortUrl += `&sort=price:${sort}`
+    }
+
     const { data, loading } = useFetch(
-        '/products?populate=*&[filters][categories]=' + catId + url);
+        `/products?populate=*&[filters][categories]=${catId}${filterUrl}&[filters][price][$lte]=${maxPrice}${sortUrl}`);
     if (loading) {
         return <p>Loading...</p>;
     }
-    console.log(data);
     return (
         <div>
             <Row>

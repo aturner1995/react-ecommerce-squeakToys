@@ -8,7 +8,7 @@ import useFetch from '../../Hooks/useFetch';
 
 const Products = () => {
   const catId = parseInt(useParams().id);
-  const [maxPrice,setMaxPrice] = useState(100);
+  const [maxPrice,setMaxPrice] = useState(50);
   const [sort,setSort] = useState(null);
   const [selectedSubCat, setSelectedSubCat] = useState([]);
 
@@ -42,9 +42,9 @@ const Products = () => {
           </Stack>
           <div className="filterItem my-2">
             <h3>Filter by Price</h3>
-            <span>0</span>
-            <input type="range" min={0} max={100} onChange={(e) => setMaxPrice(e.target.value)}/>
-            <span>{maxPrice}</span>
+            <span>$0</span>
+            <input type="range" min={0} max={50} onChange={(e) => setMaxPrice(e.target.value)}/>
+            <span>${maxPrice}</span>
           </div>
           <div className="filterItem my-2">
             <h3>Sort By</h3>
@@ -53,7 +53,7 @@ const Products = () => {
               <label htmlFor="asc">Price (Lowest First)</label>
             </div>
             <div className="inputItem">
-              <input type="radio" id='dsc' value='dsc' name='price' onChange={(e) => setSort('dsc')}/>
+              <input type="radio" id='desc' value='desc' name='price' onChange={(e) => setSort('desc')}/>
               <label htmlFor="dsc">Price (Highest First)</label>
             </div>
           </div>

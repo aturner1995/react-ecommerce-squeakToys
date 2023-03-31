@@ -28,7 +28,7 @@ const Navigation = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <NavLink to="/products/1" className='me-3'>
+              <NavLink to="/products/4" className='me-3'>
                 <Button className="d-flex align-items-center mt-0 prime-custom text-white">Shop Now</Button>
               </NavLink>
               <NavLink to="#" className='me-3'>

@@ -4,55 +4,69 @@ import { Row, Col, Container, Image, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import useFetch from '../../Hooks/useFetch';
+import { useParams } from 'react-router';
+import FeaturedProducts from '../../components/FeaturedProducts/FeaturedProducts'
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/cartReducer';
 
 const Product = () => {
 
-  const [selectedImg, setSelectedImg] = useState(0);
+  const [selectedImg, setSelectedImg] = useState('img');
   const [quantity, setQuantity] = useState(1);
+  const productId = parseInt(useParams().id);
+  const dispatch = useDispatch();
 
-  const images = [
-    'https://www.petvalu.ca/ccstore/v1/images/?source=/file/v6753388337233359265/products/SCM09680CA.1.jpg&height=300&width=300',
-    'https://www.petvalu.ca/ccstore/v1/images/?source=/file/v4568606820089954571/products/SCM09680CA.2.jpg&height=300&width=300'
-  ];
+  const { data, loading } = useFetch(
+    `/products/${productId}?populate=*`
+  );
+
+  if (loading) {
+    return <p>Loading...</p>
+  }
+
+  console.log(data);
 
   return (
-    <Container className='product'>
+    <>
+      <Container className='product my-5 text-center'>
       <Row>
-        <Col className='left' lg={6}>
-          <Col className='images' lg={4}>
-            <Image src={images[0]} onClick={(e) => setSelectedImg(0)} />
-            <Image src={images[1]} onClick={(e) => setSelectedImg(1)} />
+        <Col className='left-images' xl={6}>
+          <Col className='images'>
+            <Image src={process.env.REACT_APP_UPLOAD_URL + data.attributes.img.data.attributes.url} onClick={(e) => setSelectedImg('img')} />
+            <Image src={process.env.REACT_APP_UPLOAD_URL + data.attributes.img2.data.attributes.url} onClick={(e) => setSelectedImg('img2')} />
           </Col>
-          <Col className='mainImage' lg={8}>
-            <Image src={images[selectedImg]} />
+          <Col className='firstImage'>
+            <Image src={process.env.REACT_APP_UPLOAD_URL + data.attributes[selectedImg].data.attributes.url} />
           </Col>
         </Col>
-        <Col className='right' lg={6}>
-            <h1>Title</h1>
-            <span>$49.99</span>
-            <p>Description Section</p>
-            <div className="quantity">
-              <Button onClick={(e) => setQuantity((prev) => prev ===1 ?1 : prev-1)}>-</Button>
-              {quantity}
-              <Button onClick={(e) => setQuantity((prev) => prev+1)}>+</Button>
-            </div>
-            <Button className='add'>
-              <AddShoppingCartIcon/> ADD TO CART
-            </Button>
-            <div className="item">
-                <FavoriteBorderIcon/> Add To Wishlist
-            </div>
-            <hr />
-            <div className="info">
-              <span>DESCRIPTION</span>
-              <hr />
-              <span>ADDITIONAL INFORMATION</span>
-              <hr />
-              <span>FAQ</span>
-            </div>
+        <Col className='right' xl={6}>
+          <h1>{data.attributes.title}</h1>
+          <div className="prices">
+            <span className='oldPrice'>${data.attributes.oldPrice}</span>
+            <span className='newPrice'>${data.attributes.price}</span>
+          </div>
+          <p>{data.attributes.description}</p>
+          <div className="quantity">
+            <Button onClick={(e) => setQuantity((prev) => prev === 1 ? 1 : prev - 1)}>-</Button>
+            {quantity}
+            <Button onClick={(e) => setQuantity((prev) => prev + 1)}>+</Button>
+          </div>
+          <Button className='add prime-custom' onClick={()=> dispatch(addToCart({
+            id: data.id,
+            title: data.attributes.title,
+            desc: data.attributes.desc,
+            price: data.attributes.price,
+            img: data.attributes.img.data.attributes.url,
+            quantity,
+          }))}>
+            <AddShoppingCartIcon /> ADD TO CART
+          </Button>
         </Col>
       </Row>
     </Container>
+    <FeaturedProducts type={'Featured'}/>
+    </>
   )
 }
 

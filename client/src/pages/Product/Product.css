@@ -5,16 +5,47 @@
     flex: 1;
     max-width: 100px;
     gap: 20px;
+    align-content: center;
 }
 
-/* .mainImage {
+.firstImage {
     display: flex;
-    height: 500px;
-} */
-
-.left {
-    display: flex;
-    gap: 20px;
+    height: 400px;
+    width: 100%;
+    justify-content: center;
+    position: relative;
 }
+
+.left-images {
+    display: flex;
+    gap: 2%;
+    position: relative;
+}
+
+.quantity button {
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  background-color: #cec9c9;
+  border: none;
+  border-radius: 50%;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 0;
+  margin-left: 1%;
+  margin-right: 1%;
+  display: inline-flex;
+}
+
+
+.quantity button:hover {
+  background-color: #dc882d;
+}
+
+.quantity button:active {
+  background-color: #dc882d !important;
+}
+
 
 

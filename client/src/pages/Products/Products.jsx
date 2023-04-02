@@ -12,10 +12,13 @@ const Products = () => {
   const [sort,setSort] = useState(null);
   const [selectedSubCat, setSelectedSubCat] = useState([]);
 
-  const { data, loading } = useFetch(
+  const { data: subCategoriesData, loading: subCategoriesLoading } = useFetch(
     `/sub-categories?[filter][categories][id][$eq]=${catId}`
   );
-  if (loading) {
+  
+  const { data: categoriesData, loading: categoriesLoading } = useFetch('/categories?populate=*');
+
+  if (subCategoriesLoading || categoriesLoading) {
     return <p>Loading...</p>;
   }
 
@@ -26,14 +29,19 @@ const Products = () => {
     setSelectedSubCat(checked ? [...selectedSubCat,value] : selectedSubCat.filter((item) => item !== value))
   }
 
+  console.log(categoriesData)
+
   return (
     <Row className='products mx-0'>
-      <Image src='/images/hero.jpeg' alt='Dog playing with toy' fluid className='top-img'/>
+      <div className="cat-img">
+        <h1>{categoriesData[catId-1].attributes.title} Toys</h1>
+        <Image src={process.env.REACT_APP_UPLOAD_URL + categoriesData[catId-1].attributes.img.data.attributes.url} alt='Dog playing with toy' fluid className='top-img'/>
+      </div>
       <Col sm={3}>
         <Stack className='left my-4'>
           <Stack className='filterItem'>
             <h3>Product Categories</h3>
-            {data.map(item => (
+            {subCategoriesData.map(item => (
                 <div className="inputItem" key={item.id}>
                   <input type="checkbox" id={item.id} value={item.id} onChange={handleChange}/>
                   <label htmlFor={item.id} className='mx-1'>{item.attributes.title}</label>

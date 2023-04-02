@@ -9,7 +9,7 @@ const Categories = () => {
             <Col lg={4} >
                 <div className='category my-2'>
                 <Link to={`/products/1`}>
-                    <Image src='/images/cat1.jpg' alt="Large Dogs" fluid className='cat-img'/>
+                    <Image src='/images/cat1.jpg' alt="Large Dogs" fluid className='cat-img grow'/>
                     <Button className='cat-btn prime-custom text-white' size='lg'>
                         LARGE DOG TOYS
                     </Button>
@@ -19,7 +19,7 @@ const Categories = () => {
             <Col lg={4}>
                 <div className='category my-2'>
                 <Link to={`/products/2`}>
-                    <Image src='/images/cat2.jpg' alt="Med Dogs" fluid className='cat-img'/>
+                    <Image src='/images/cat2.jpg' alt="Med Dogs" fluid className='cat-img grow'/>
                     <Button className='cat-btn prime-custom text-white' size='lg'>
                        MEDIUM DOG TOYS
                     </Button>
@@ -29,7 +29,7 @@ const Categories = () => {
             <Col lg={4}> 
                 <div className='category my-2'>
                 <Link to={`/products/3`}>
-                    <Image src='/images/cat3.jpg' alt="Small Dogs" fluid className='cat-img'/>
+                    <Image src='/images/cat3.jpg' alt="Small Dogs" fluid className='cat-img grow'/>
                     <Button className='cat-btn prime-custom text-white' size='lg'>
                         SMALL DOG TOYS
                     </Button>
@@ -40,4 +40,4 @@ const Categories = () => {
     )
 }
 
-export default Categories
+export default Categories;

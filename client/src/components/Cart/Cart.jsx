@@ -1,43 +1,77 @@
 import React from 'react';
 import './Cart.css';
 import { Image, Button } from 'react-bootstrap';
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { useSelector } from 'react-redux';
+import { removeItem, resetCart } from "../../redux/cartReducer";
+import { useDispatch } from "react-redux";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from 'axios';
 
 const Cart = () => {
-    const data = [
-        {
-            id: 1,
-            img: 'https://www.petvalu.ca/ccstore/v1/images/?source=/file/v6753388337233359265/products/SCM09680CA.1.jpg&height=300&width=300',
-            img2: 'https://www.petvalu.ca/ccstore/v1/images/?source=/file/v4568606820089954571/products/SCM09680CA.2.jpg&height=475&width=475',
-            title: 'Big Fish Squeak Toy',
-            isNew: true,
-            oldPrice: 49.99,
-            newPrice: 39.99
+    const products = useSelector((state) => state.cart.products);
+    const dispatch = useDispatch();
+  
+    const totalPrice = () => {
+      let total = 0;
+      products.forEach((item) => {
+        total += item.quantity * item.price;
+      });
+      return total.toFixed(2);
+    };
+  
+    const stripePromise = loadStripe(
+      "pk_test_51MsWibIAsi6pFDnovLWfnGgVHilvLqFUBeAJDVC8NeBZDRcs61lrhyic556rriT57YHFmiIdb7TTcnSGRy94PoTW00yzXqHOM8"
+    );
+    const handlePayment = async () => {
+        try {
+          const stripe = await stripePromise;
+          const response = await axios.post(
+            process.env.REACT_APP_API_URL+'/orders',
+            { data: { products } },
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'bearer' + process.env.REACT_APP_API_TOKEN
+              },
+            }
+          );
+          console.log('response:', response);
+      
+          await stripe.redirectToCheckout({
+            sessionId: response.data.stripeSession.id,
+          });
+      
+        } catch (err) {
+          console.log(err);
         }
-    ]
+      };
+
     return (
-        <div>
+        <div className='cart'>
             <h1>Your Cart</h1>
-            {data.map(item => (
+            {products.map(item => (
                 <div className="item" key={item.id}>
-                    <Image src={item.img} />
+                    <Image src={process.env.REACT_APP_UPLOAD_URL + item.img} />
                     <div className="details">
                         <h1>{item.title}</h1>
-                        <p>{item.desc?.substring(0, 100)}</p>
                         <div className="price">
                             {item.quantity} x ${item.price}
                         </div>
                     </div>
+                    <DeleteOutlinedIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
                 </div>
             ))}
             <div className="total">
-        <span>SUBTOTAL</span>
-        <span>Total Price</span>
-      </div>
-      <Button>PROCEED TO CHECKOUT</Button>
-      <span className="reset">
-        Reset Cart
-      </span>
-    </div>
+                <span>Total Price: ${totalPrice()}</span>
+            </div>
+            <div className="text-center">
+                <Button onClick={handlePayment}>PROCEED TO CHECKOUT</Button>
+            </div>
+            <span className="reset text-center" onClick={() => dispatch(resetCart())}>
+                Reset Cart
+            </span>
+        </div>
     )
 }
 

@@ -9,8 +9,6 @@ const FeaturedProducts = ({type}) => {
     `/products?populate=*&[filters][type][$eq]=${type}`
   );
 
-  console.log(data);
-
   if (loading) {
     return <p>Loading...</p>;
   }

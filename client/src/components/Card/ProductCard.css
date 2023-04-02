@@ -32,6 +32,7 @@
     gap: 20px;
     font-weight: 500;
     font-size: large;
+    justify-content: center;
 }
 
 .oldPrice {
@@ -42,4 +43,15 @@
 a {
     text-decoration: none !important;
     color: black !important;
+}
+
+.oldPrice {
+    margin-right: 10px;
+    text-decoration: line-through;
+    color: #999;
+}
+
+.newPrice {
+    color: #f44336;
+    font-weight: bold;
 }

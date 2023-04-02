@@ -2,6 +2,10 @@
     position: relative;
 }
 
+.category:hover {
+    size: 150%;
+}
+
 .cat-btn {
     position: absolute;
     top: 50%;
@@ -21,4 +25,10 @@
 
 .cat-img {
     max-height: 75vh;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.grow:hover {
+    transform: scale(1.03);
 }

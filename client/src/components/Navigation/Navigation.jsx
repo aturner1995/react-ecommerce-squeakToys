@@ -9,9 +9,11 @@ import {Navbar, Button, Image} from 'react-bootstrap';
 import { useState } from 'react';
 import Cart from '../Cart/Cart';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Navigation = () => {
   const [open,setOpen] = useState(false);
+  const product = useSelector((state) => state.cart.products);
 
   return (
     <>
@@ -39,7 +41,7 @@ const Navigation = () => {
               </NavLink>
               <NavLink to="#" className='cart-icon' onClick={() => setOpen(!open)}>
                 <ShoppingCartOutlinedIcon />
-                <span className='cart-items'>0</span>
+                <span className='cart-items'>{product.length}</span>
               </NavLink>
             </Nav>
           </Navbar.Collapse>

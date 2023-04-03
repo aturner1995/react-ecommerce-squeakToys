@@ -9,12 +9,14 @@ import Product from './pages/Product/Product';
 import Products from './pages/Products/Products';
 import Navbar from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
+import { Toaster } from 'react-hot-toast';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Layout = () => {
   return (
     <div className='app '>
+      <Toaster />
       <Navbar />
       <Outlet />
       <Footer />

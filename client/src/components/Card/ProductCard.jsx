@@ -6,9 +6,11 @@ import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartReducer';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import toast, { Toaster } from 'react-hot-toast';
 
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
+  const notify = () => toast.success(`${item.attributes.title} Added to Cart`);
   return (
     <Card style={{ width: '18rem' }} className='grow'>
       <Link to={`/product/${item.id}`}>
@@ -29,13 +31,16 @@ const ProductCard = ({ item }) => {
             </Card.Text>
           </div>
         </Link>
-        <Button className='add prime-custom' onClick={() => dispatch(addToCart({
-          id: item.id,
-          title: item.attributes.title,
-          price: item.attributes.price,
-          img: item.attributes.img.data.attributes.url,
-          quantity: 1
-        }))}>
+        <Button className='add prime-custom' onClick={() => {
+          dispatch(addToCart({
+            id: item.id,
+            title: item.attributes.title,
+            price: item.attributes.price,
+            img: item.attributes.img.data.attributes.url,
+            quantity: 1
+          }));
+          notify();
+        }}>
           <AddShoppingCartIcon /> ADD TO CART
         </Button>
       </Card.Body>

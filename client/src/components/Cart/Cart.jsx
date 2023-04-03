@@ -23,6 +23,7 @@ const Cart = () => {
     const stripePromise = loadStripe(
       "pk_test_51MsWibIAsi6pFDnovLWfnGgVHilvLqFUBeAJDVC8NeBZDRcs61lrhyic556rriT57YHFmiIdb7TTcnSGRy94PoTW00yzXqHOM8"
     );
+    
     const handlePayment = async () => {
         try {
           const stripe = await stripePromise;

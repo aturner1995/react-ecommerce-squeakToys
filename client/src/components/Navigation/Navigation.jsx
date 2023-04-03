@@ -8,11 +8,13 @@ import Nav from 'react-bootstrap/Nav';
 import {Navbar, Button, Image} from 'react-bootstrap';
 import { useState } from 'react';
 import Cart from '../Cart/Cart';
+import Search from '../Search/Search';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Navigation = () => {
   const [open,setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const product = useSelector((state) => state.cart.products);
 
   return (
@@ -28,18 +30,24 @@ const Navigation = () => {
             />
           </NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse id="basic-navbar-nav" className='nav-icons'>
             <Nav className="ms-auto">
-              <NavLink to="/products/4" className='me-3'>
+              <NavLink to="/products/4" className='me-3 text-center'>
                 <Button className="d-flex align-items-center mt-0 prime-custom text-white">Shop Now</Button>
               </NavLink>
-              <NavLink to="#" className='me-3'>
+              <NavLink to="#" className='me-3' onClick={() => {
+                setSearchOpen(!searchOpen)
+                setOpen(false);
+              }}>
                 <SearchIcon />
               </NavLink>
               <NavLink to="#" className='me-3'>
                 <PersonOutlineOutlinedIcon />
               </NavLink>
-              <NavLink to="#" className='cart-icon' onClick={() => setOpen(!open)}>
+              <NavLink to="#" className='cart-icon text-center' onClick={() => {
+                setOpen(!open);
+                setSearchOpen(false);
+              }}>
                 <ShoppingCartOutlinedIcon />
                 <span className='cart-items'>{product.length}</span>
               </NavLink>
@@ -48,8 +56,9 @@ const Navigation = () => {
         </Container>
       </Navbar>
       {open && <Cart/>}
+      {searchOpen && <Search/>}
     </>
   );
 }
 
-export default Navigation
+export default Navigation;

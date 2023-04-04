@@ -6,37 +6,37 @@ import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartReducer';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
-  const notify = () => toast.success(`${item.attributes.title} Added to Cart`);
+  const notify = () => toast.success(`${item.name} Added to Cart`);
   return (
     <Card style={{ width: '18rem' }} className='grow'>
-      <Link to={`/product/${item.id}`}>
+      <Link to={`/product/${item._id}`}>
         <div className="image">
-          <Card.Img variant="top" src={process.env.REACT_APP_UPLOAD_URL + item.attributes?.img?.data?.attributes?.url} className='mainImage' />
-          <Card.Img variant="top" src={process.env.REACT_APP_UPLOAD_URL + item.attributes?.img2?.data?.attributes?.url} className='secondImage' />
+          <Card.Img variant="top" src={item.img} className='mainImage' />
+          <Card.Img variant="top" src={item.img2} className='secondImage' />
         </div>
       </Link>
       <Card.Body>
-        <Link to={`/product/${item.id}`}>
-          <Card.Title>{item.attributes.title}</Card.Title>
+        <Link to={`/product/${item._id}`}>
+          <Card.Title>{item.name}</Card.Title>
           <div className="prices">
             <Card.Text className='oldPrice'>
-              ${item.attributes?.oldPrice}
+              ${item.oldPrice}
             </Card.Text>
             <Card.Text className='newPrice'>
-              ${item.attributes?.price}
+              ${item.price}
             </Card.Text>
           </div>
         </Link>
         <Button className='add prime-custom' onClick={() => {
           dispatch(addToCart({
-            id: item.id,
-            title: item.attributes.title,
-            price: item.attributes.price,
-            img: item.attributes.img.data.attributes.url,
+            id: item._id,
+            title: item.name,
+            price: item.price,
+            img: item.img,
             quantity: 1
           }));
           notify();

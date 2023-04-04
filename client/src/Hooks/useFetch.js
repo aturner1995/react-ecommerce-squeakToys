@@ -5,15 +5,13 @@ const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  console.log(url);
+
   useEffect(()=> {
     const fetchData = async () => {
       try {
-        const response = await axios.get(process.env.REACT_APP_API_URL + url,{
-          headers: {
-            Authorization: 'bearer' + process.env.REACT_APP_API_TOKEN
-          }, 
-        });
-        setData(response.data.data);
+        const response = await axios.get(url);
+        setData(response.data);
         setLoading(false);
       } catch(err) {
         console.log(err);

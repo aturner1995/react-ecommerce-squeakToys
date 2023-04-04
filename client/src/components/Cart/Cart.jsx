@@ -11,6 +11,8 @@ import axios from 'axios';
 const Cart = () => {
     const products = useSelector((state) => state.cart.products);
     const dispatch = useDispatch();
+
+    console.log(products)
   
     const totalPrice = () => {
       let total = 0;
@@ -53,7 +55,7 @@ const Cart = () => {
             <h1>Your Cart</h1>
             {products.map(item => (
                 <div className="item" key={item.id}>
-                    <Image src={process.env.REACT_APP_UPLOAD_URL + item.img} />
+                    <Image src={item.img} />
                     <div className="details">
                         <h1>{item.title}</h1>
                         <div className="price">

@@ -5,19 +5,20 @@ import { Row, Col } from 'react-bootstrap';
 import useFetch from "../../Hooks/useFetch";
 
 const List = ({ catId, maxPrice, sort, subCat }) => {
-    subCat.map((item)=> console.log(item));
+    console.log(subCat);
     let filterUrl ='';
     let sortUrl ='';
 
-    if (subCat) {
-        filterUrl += subCat.map(item => `&[filters][sub_categories][id][$eq]=${item}`).join('');
+    if (subCat && subCat.length > 0) {
+        filterUrl += subCat.map(item => `&subCat=${item}`).join('');
     }
     if(sort) {
-        sortUrl += `&sort=price:${sort}`
+        sortUrl += `&sort=${sort}`
     }
 
     const { data, loading } = useFetch(
-        `/products?populate=*&[filters][categories]=${catId}${filterUrl}&[filters][price][$lte]=${maxPrice}${sortUrl}`);
+        `/api/products/categories?id=${catId}&maxPrice=${maxPrice}${filterUrl}${sortUrl}`);
+
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -25,7 +26,7 @@ const List = ({ catId, maxPrice, sort, subCat }) => {
         <div>
             <Row>
                 {data.map(item => (
-                    <Col className='product-card my-2 text-center' key={item.id} >
+                    <Col className='product-card my-2 text-center' key={item._id} >
                         <ProductCard item={item} />
                     </Col>
                 )
@@ -35,4 +36,4 @@ const List = ({ catId, maxPrice, sort, subCat }) => {
     )
 }
 
-export default List
+export default List;

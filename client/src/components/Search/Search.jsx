@@ -9,7 +9,7 @@ const Search = () => {
 
     const [search, setSearch] = useState('');
     
-    const { data, loading } = useFetch(`/products?populate=*&[filters][title][$contains]=${search}`);
+    const { data, loading } = useFetch(`/api/products?name=${search}`);
     
     if (loading) {
         return (

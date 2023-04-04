@@ -7,16 +7,16 @@ import List from '../../components/List/List';
 import useFetch from '../../Hooks/useFetch';
 
 const Products = () => {
-  const catId = parseInt(useParams().id);
-  const [maxPrice,setMaxPrice] = useState(50);
+  const catId = (useParams().id);
+  const [maxPrice,setMaxPrice] = useState(30);
   const [sort,setSort] = useState(null);
   const [selectedSubCat, setSelectedSubCat] = useState([]);
 
   const { data: subCategoriesData, loading: subCategoriesLoading } = useFetch(
-    `/sub-categories?[filter][categories][id][$eq]=${catId}`
+    `/api/products/subcategories?id=${catId}`
   );
   
-  const { data: categoriesData, loading: categoriesLoading } = useFetch('/categories?populate=*');
+  const { data: categoriesData, loading: categoriesLoading } = useFetch(`/api/products/categories?id=${catId}`);
 
   if (subCategoriesLoading || categoriesLoading) {
     return <p>Loading...</p>;
@@ -29,29 +29,27 @@ const Products = () => {
     setSelectedSubCat(checked ? [...selectedSubCat,value] : selectedSubCat.filter((item) => item !== value))
   }
 
-  console.log(categoriesData)
-
   return (
     <Row className='products mx-0'>
       <div className="cat-img">
-        <h1>{categoriesData[catId-1].attributes.title} Toys</h1>
-        <Image src={process.env.REACT_APP_UPLOAD_URL + categoriesData[catId-1].attributes.img.data.attributes.url} alt='Dog playing with toy' fluid className='top-img'/>
+        <h1>{catId} Toys</h1>
+        <Image src={'/images/dog-toys-cat.jpg'} alt='Dog playing with toy' fluid className='top-img'/>
       </div>
       <Col sm={3}>
         <Stack className='left my-4'>
           <Stack className='filterItem'>
             <h3>Product Categories</h3>
             {subCategoriesData.map(item => (
-                <div className="inputItem" key={item.id}>
-                  <input type="checkbox" id={item.id} value={item.id} onChange={handleChange}/>
-                  <label htmlFor={item.id} className='mx-1'>{item.attributes.title}</label>
+                <div className="inputItem" key={item}>
+                  <input type="checkbox" id={item} value={item} onChange={handleChange}/>
+                  <label htmlFor={item} className='mx-1'>{item}</label>
                 </div>
             ))}
           </Stack>
           <div className="filterItem my-2">
             <h3>Filter by Price</h3>
             <span>$0</span>
-            <input type="range" min={0} max={50} onChange={(e) => setMaxPrice(e.target.value)}/>
+            <input type="range" min={0} max={30} onChange={(e) => setMaxPrice(e.target.value)}/>
             <span>${maxPrice}</span>
           </div>
           <div className="filterItem my-2">

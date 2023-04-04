@@ -10,7 +10,8 @@ const data = {
         description: 'This KONG Wild Knots Bear is soft and cuddly on the outside while durable and strong on the inside. Wild Knots bears are sure to be a hit with dogs and their pet parents. Dogs love the knotted skeleton, and the reinforced plush body provides extra durability. KONG Wild Knots have less stuffing for less mess and they squeak to entice play.',
         oldPrice: 24.99,
         price: 15.99,
-        type: 'featured'
+        type: 'featured',
+        subCat: 'Chew Toy'
       },
       {
         name: 'Teddy Bear Plush Puzzle',
@@ -22,7 +23,8 @@ const data = {
         description: `The Ringamals from Outward Hound are a cute collection of plush puzzle dog toys your pup is sure to love! These soft and plushy dog toys are made to be gentle on your dog's gums when they bite but tough during rough play. K9 Tuff Guard technology featuring denier canvas lining, nylon-fused backing, and double stitched seams add durability. Place these dog toys on the ground and watch your pup bite, paw, and use their noggin to remove the squeaky, and crinkly rings off of the bear.`,
         oldPrice: 27.49,
         price: 21.99,
-        type: 'normal'
+        type: 'normal',
+        subCat: 'Plush Toy'
       },
       {
         name: 'Elephant Dog Toy - Plush',
@@ -34,7 +36,8 @@ const data = {
         description: `This KONG Comfort Kiddos Elephant Dog Toy is ideal for doggie play and cuddle time. Featuring a low tone bellow squeaker that pique a dog's curiosity and a removable squeaker for quiet time. The squeaker is easy to remove, making it ideal for cuddle time, insert back into the toy for countless indoor play sessions. These adorable critters come in 5 shapes and 2 sizes and are sure to delight dogs and pet parents alike.`,
         oldPrice: 24.99,
         price: 15.99,
-        type: 'normal'
+        type: 'normal',
+        subCat: 'Plush Toy'
       },
       {
         name: 'Shark Dog Toy',
@@ -46,7 +49,8 @@ const data = {
         description: 'Tuffy toys like this Ocean Creature Shark are the most durable dog toys on the market! With up to 4 layers of material, our toys are bonded and sewn together for added durability. Most dog toys have just one seam to hold the toy together. Tuffy toys can have up to 7 rows of stitching! A protective webbing is sewn around the outside edge to cover the seams of the toy and make the toy even stronger.',
         oldPrice: 32.99,
         price: 28.99,
-        type: 'normal'
+        type: 'normal',
+        subCat: 'Plush Toy'
       },
       {
         name: `Knots Twists' Dog Toy`,
@@ -58,7 +62,8 @@ const data = {
         description: `The KONG Knots Twists' long braided neck satisfies thrashing instincts with an irresistible braid of durable cotton rope dogs love to chew. Squeaker keeps play going while minimal stuffing means easy cleanup for an instinct-satisfying pal that's both soft and durable. Plus, chewing on rope helps clean teeth.`,
         oldPrice: 24.99,
         price: 16.99,
-        type: 'featured'
+        type: 'featured',
+        subCat: 'Chew Toy',
       },
       {
         name: 'Lion Dog Toy - Plush',
@@ -70,7 +75,8 @@ const data = {
         description: `The KONG Cozie Ultra Lion uses KONG Ultra-Tex fabric construction, which combines ultra-durable technology that uniquely supports action-packed fun. The ripstop material and reinforced seams are supported with a robust interior liner and is designed to fulfill a dog's natural hunting and chewing instincts.`,
         oldPrice: 26.99,
         price: 17.99,
-        type: 'normal'
+        type: 'normal',
+        subCat: 'Plush Toy'
       },
       {
         name: 'Plush Alligator Dog Toy',
@@ -82,7 +88,8 @@ const data = {
         description: `Our Joyhound Fly Knit Alligator Dog Toy is a plush toy that provides companionship and comfort for small, medium, and large dogs. The super cute toy design is stuffed with an internal squeaker to provide hours of interactivity to comfort and entertain. The plush toy exterior provides a gentle surface for soothing and sleep.`,
         oldPrice: 19.99,
         price: 14.99,
-        type: 'trending'
+        type: 'trending',
+        subCat: 'Plush Toy'
       },
       {
         name: 'Desert Phrog Dog Toy',
@@ -94,7 +101,8 @@ const data = {
         description: `This Tuffy Desert Phrog Leaping Squeaker Dog Toy is among the most durable dog toys on the market! With up to 4 layers of material, this toy is bonded and sewn together for added durability. Most dog toys have just one seam to hold the toy together.`,
         oldPrice: 28.99,
         price: 22.99,
-        type: 'trending'
+        type: 'trending',
+        subCat: 'Plush Toy'
       },
       {
         name: 'Purple Giraffe Dog Toy',
@@ -106,7 +114,8 @@ const data = {
         description: `This TUFFY Giraffe is sure to be your dog's new best friend! TUFFY toys are the most durable dog toys on the market. With up to 4 layers of material, our toys are bonded and sewn together for added durability. Most dog toys have just one seam to hold the toy together.`,
         oldPrice: 32.99,
         price: 27.99,
-        type: 'normal'
+        type: 'normal',
+        subCat: 'Plush Toy'
       },
       {
         name: 'Plush Octopus Dog Toy',
@@ -118,7 +127,8 @@ const data = {
         description: `Our Biteshield Plush Octopus Dog Toy is a plush toy that provides companionship and comfort for small, medium, and large dogs. This soft, sweet, squeaky behavioral aid is great for cuddling and helps provide relief from anxiety, boredom, and loneliness. The super cute toy design is stuffed with an internal squeaker to provide hours of interactivity to comfort and entertain, and it makes crinkling sounds as well.`,
         oldPrice: 32.99,
         price: 24.99,
-        type: 'featured'
+        type: 'featured',
+        subCat: 'Plush Toy'
       },
       {
         name: 'Plush Fish Dog Toy',
@@ -130,7 +140,8 @@ const data = {
         description: `Our Biteshield Plush Fish Dog Toy is a plush toy that provides companionship and comfort for small, medium, and large dogs. This soft, sweet, squeaky behavioral aid is great for cuddling and helps provide relief from anxiety, boredom, and loneliness. The super cute toy design is stuffed with an internal squeaker to provide hours of interactivity to comfort and entertain, and it makes crinkling sounds as well.`,
         oldPrice: 15.99,
         price: 11.99,
-        type: 'featured'
+        type: 'featured',
+        subCat: 'Plush Toy'
       },
       {
         name: 'Tennis Ball Blaster',
@@ -142,7 +153,8 @@ const data = {
         description: `Take aim with the Nerf Dog Tennis Ball Blaster! High-powered blasting action launches your dog's favorite fetching tennis ball over 50ft in the air. When your dog brings it back, stay in the game by placing the barrel on the tennis ball and pick it up "hands-free." And, unlike other brands of tennis ball blasters, the NERF DOG blaster's mechanism is safe for your hands.`,
         oldPrice: 32.99,
         price: 29.99,
-        type: 'trending'
+        type: 'trending',
+        subCat: 'Ball Toy'
       },
       {
         name: 'Ball Launcher Dog Toy',
@@ -154,7 +166,8 @@ const data = {
         description: `With its high performance control grip handle you'll use the Chuckit! Pro Launcher Dog Toy to throw the ball two to three times further than you can alone (depending on which model you choose). Plus it picks up tennis balls tossed into mud or water during games of fetch.`,
         oldPrice: 19.99,
         price: 16.99,
-        type: 'normal'
+        type: 'normal',
+        subCat: 'Ball Toy'
       },
       {
         name: 'CoreStrength Bone Dog Toy',
@@ -166,7 +179,8 @@ const data = {
         description: `Keep your dog active and entertained with the KONG Corestrength Bone Dog Toy. This strong and sturdy toy features a reinforced core for added toughness, and is perfect for interactive fun including games of fetch and tug, as well as vigorous chewing sessions.`,
         oldPrice: 22.99,
         price: 16.99,
-        type: 'trending'
+        type: 'trending',
+        subCat: 'Chew Toy'
       },
     ],
   };

@@ -11,7 +11,8 @@ const productSchema = new mongoose.Schema(
         description: {type: String, required: true},
         oldPrice: {type: Number, required: true},
         price: {type: Number, required: true},
-        type: {type: String, required:true}
+        type: {type: String, required:true},
+        subCat: {type: String, required: true}
     },
     {
         timestamps: true

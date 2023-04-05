@@ -19,7 +19,6 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use('/api/seed', seedRouter);

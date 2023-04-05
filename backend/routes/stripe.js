@@ -6,9 +6,7 @@ dotenv.config();
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: '2020-08-27' });
 const stripeRouter = express.Router();
-stripeRouter.use(cors({
-  origin: 'https://squeaktoys.herokuapp.com'
-}));
+stripeRouter.use(cors());
 
 const YOUR_DOMAIN = process.env.CLIENT_URL;
 

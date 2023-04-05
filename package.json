@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/aturner1995/react-ecommerce-squeekToys#readme",
   "engines": {
-    "node": "18.12.1",
-    "npm": "8.19.2"
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
   }
 }

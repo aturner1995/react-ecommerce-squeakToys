@@ -21,7 +21,7 @@ const Cart = () => {
 
   const handlePayment = () => {
     axios.post(
-      'https://squeaktoys.herokuapp.com/api/stripe/create-checkout-session',
+      process.env.REACT_APP_API_URL + '/stripe/create-checkout-session',
       { data: products },
       {
         headers: {

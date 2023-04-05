@@ -11,7 +11,7 @@ const Categories = () => {
                 <Link to={`/products/Large Dog`}>
                     <Image src='/images/cat1.jpg' alt="Large Dogs" fluid className='cat-img grow'/>
                     <Button className='cat-btn prime-custom text-white' size='lg'>
-                        LARGE DOG TOYS
+                        LARGE DOGS
                     </Button>
                     </Link>
                 </div>
@@ -21,7 +21,7 @@ const Categories = () => {
                 <Link to={`/products/Medium Dog`}>
                     <Image src='/images/cat2.jpg' alt="Med Dogs" fluid className='cat-img grow'/>
                     <Button className='cat-btn prime-custom text-white' size='lg'>
-                       MEDIUM DOG TOYS
+                       MEDIUM DOGS
                     </Button>
                     </Link>
                 </div>
@@ -31,7 +31,7 @@ const Categories = () => {
                 <Link to={`/products/Small Dog`}>
                     <Image src='/images/cat3.jpg' alt="Small Dogs" fluid className='cat-img grow'/>
                     <Button className='cat-btn prime-custom text-white' size='lg'>
-                        SMALL DOG TOYS
+                        SMALL DOGS
                     </Button>
                     </Link>
                 </div>

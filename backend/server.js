@@ -5,6 +5,7 @@ import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import stripeRouter from './routes/stripe.js'
 import cors from 'cors';
+import path from 'path'
 
 
 dotenv.config();
@@ -19,11 +20,18 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use('/api/seed', seedRouter);
 app.use('/api/products', productRouter);
 app.use('/api/stripe', stripeRouter);
-app.use(cors());
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/client/build')));
+app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname, '/client/build/index.html'))
+});
+
 
 const PORT = process.env.PORT || 3001;
 

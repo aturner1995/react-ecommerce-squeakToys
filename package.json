@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/aturner1995/react-ecommerce-squeekToys/issues"
   },
-  "homepage": "https://github.com/aturner1995/react-ecommerce-squeekToys#readme"
+  "homepage": "https://github.com/aturner1995/react-ecommerce-squeekToys#readme",
+  "engines": {
+    "node": "18.12.1",
+    "npm": "8.19.2"
+  }
 }

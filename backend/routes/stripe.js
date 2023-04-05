@@ -11,7 +11,6 @@ stripeRouter.use(cors());
 const YOUR_DOMAIN = process.env.CLIENT_URL;
 
 stripeRouter.post('/create-checkout-session', async (req, res) => {
-    console.log(req.body.data)
 
     const line_items = req.body.data.map((item) => {
         return {

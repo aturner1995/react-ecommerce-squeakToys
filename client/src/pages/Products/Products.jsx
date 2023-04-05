@@ -12,13 +12,11 @@ const Products = () => {
   const [sort,setSort] = useState(null);
   const [selectedSubCat, setSelectedSubCat] = useState([]);
 
-  const { data: subCategoriesData, loading: subCategoriesLoading } = useFetch(
+  const { data, loading } = useFetch(
     `/api/products/subcategories?id=${catId}`
   );
-  
-  const { data: categoriesData, loading: categoriesLoading } = useFetch(`/api/products/categories?id=${catId}`);
 
-  if (subCategoriesLoading || categoriesLoading) {
+  if (loading) {
     return <p>Loading...</p>;
   }
 
@@ -39,7 +37,7 @@ const Products = () => {
         <Stack className='left my-4'>
           <Stack className='filterItem'>
             <h3>Product Categories</h3>
-            {subCategoriesData.map(item => (
+            {data.map(item => (
                 <div className="inputItem" key={item}>
                   <input type="checkbox" id={item} value={item} onChange={handleChange}/>
                   <label htmlFor={item} className='mx-1'>{item}</label>

@@ -5,7 +5,6 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { useSelector } from 'react-redux';
 import { removeItem, resetCart } from "../../redux/cartReducer";
 import { useDispatch } from "react-redux";
-import { loadStripe } from "@stripe/stripe-js";
 import axios from 'axios';
 
 const Cart = () => {
@@ -21,10 +20,6 @@ const Cart = () => {
     });
     return total.toFixed(2);
   };
-
-  const stripePromise = loadStripe(
-    "pk_test_51MsWibIAsi6pFDnovLWfnGgVHilvLqFUBeAJDVC8NeBZDRcs61lrhyic556rriT57YHFmiIdb7TTcnSGRy94PoTW00yzXqHOM8"
-  );
 
   const handlePayment = () => {
     axios.post(

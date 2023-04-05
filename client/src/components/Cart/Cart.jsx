@@ -20,7 +20,8 @@ const Cart = () => {
   };
 
   const handlePayment = () => {
-    axios.post('/stripe/create-checkout-session',
+    axios.post(
+      process.env.REACT_APP_API_URL + '/stripe/create-checkout-session',
       { data: products },
       {
         headers: {

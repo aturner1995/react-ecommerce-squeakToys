@@ -11,8 +11,6 @@ const Cart = () => {
   const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
 
-  console.log(products)
-
   const totalPrice = () => {
     let total = 0;
     products.forEach((item) => {
@@ -22,8 +20,7 @@ const Cart = () => {
   };
 
   const handlePayment = () => {
-    axios.post(
-      process.env.REACT_APP_API_URL + '/stripe/create-checkout-session',
+    axios.post('/stripe/create-checkout-session',
       { data: products },
       {
         headers: {

@@ -12,7 +12,6 @@ const FeaturedProducts = ({type}) => {
   if (loading) {
     return <p>Loading...</p>;
   }
-  console.log(data)
   return (
     <Container className='featuredProducts my-5'>
         <div className="top">

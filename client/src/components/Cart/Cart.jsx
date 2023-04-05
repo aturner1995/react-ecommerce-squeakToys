@@ -9,73 +9,68 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from 'axios';
 
 const Cart = () => {
-    const products = useSelector((state) => state.cart.products);
-    const dispatch = useDispatch();
+  const products = useSelector((state) => state.cart.products);
+  const dispatch = useDispatch();
 
-    console.log(products)
-  
-    const totalPrice = () => {
-      let total = 0;
-      products.forEach((item) => {
-        total += item.quantity * item.price;
-      });
-      return total.toFixed(2);
-    };
-  
-    const stripePromise = loadStripe(
-      "pk_test_51MsWibIAsi6pFDnovLWfnGgVHilvLqFUBeAJDVC8NeBZDRcs61lrhyic556rriT57YHFmiIdb7TTcnSGRy94PoTW00yzXqHOM8"
-    );
-    
-    const handlePayment = async () => {
-        try {
-          const stripe = await stripePromise;
-          const response = await axios.post(
-            process.env.REACT_APP_API_URL+'/orders',
-            { data: { products } },
-            {
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'bearer' + process.env.REACT_APP_API_TOKEN
-              },
-            }
-          );
-          console.log('response:', response);
-      
-          await stripe.redirectToCheckout({
-            sessionId: response.data.stripeSession.id,
-          });
-      
-        } catch (err) {
-          console.log(err);
-        }
-      };
+  console.log(products)
 
-    return (
-        <div className='cart'>
-            <h1>Your Cart</h1>
-            {products.map(item => (
-                <div className="item" key={item.id}>
-                    <Image src={item.img} />
-                    <div className="details">
-                        <h1>{item.title}</h1>
-                        <div className="price">
-                            {item.quantity} x ${item.price}
-                        </div>
-                    </div>
-                    <DeleteOutlinedIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
-                </div>
-            ))}
-            <div className="total">
-                <span>Total Price: ${totalPrice()}</span>
-            </div>
-            <div className="text-center">
-                <Button onClick={handlePayment}>PROCEED TO CHECKOUT</Button>
-            </div>
-            <span className="reset text-center" onClick={() => dispatch(resetCart())}>
-                Reset Cart
-            </span>
-        </div>
+  const totalPrice = () => {
+    let total = 0;
+    products.forEach((item) => {
+      total += item.quantity * item.price;
+    });
+    return total.toFixed(2);
+  };
+
+  const stripePromise = loadStripe(
+    "pk_test_51MsWibIAsi6pFDnovLWfnGgVHilvLqFUBeAJDVC8NeBZDRcs61lrhyic556rriT57YHFmiIdb7TTcnSGRy94PoTW00yzXqHOM8"
+  );
+
+  const handlePayment = () => {
+    axios.post(
+      process.env.REACT_APP_API_URL + '/stripe/create-checkout-session',
+      { data: products },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.REACT_APP_STRIPE_SECRET_KEY}`
+        },
+      }
     )
+      .then((response) => {
+        if (response.data.url) {
+          window.location.href = response.data.url;
+        }
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  return (
+    <div className='cart'>
+      <h1>Your Cart</h1>
+      {products.map(item => (
+        <div className="item" key={item.id}>
+          <Image src={item.img} />
+          <div className="details">
+            <h1>{item.title}</h1>
+            <div className="price">
+              {item.quantity} x ${item.price}
+            </div>
+          </div>
+          <DeleteOutlinedIcon className='delete' onClick={() => dispatch(removeItem(item.id))} />
+        </div>
+      ))}
+      <div className="total">
+        <span>Total Price: ${totalPrice()}</span>
+      </div>
+      <div className="text-center">
+        <Button onClick={handlePayment}>PROCEED TO CHECKOUT</Button>
+      </div>
+      <span className="reset text-center" onClick={() => dispatch(resetCart())}>
+        Reset Cart
+      </span>
+    </div>
+  )
 }
 
 export default Cart

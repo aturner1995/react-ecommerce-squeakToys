@@ -1,6 +1,4 @@
 import express from "express";
-import { modelNames } from "mongoose";
-import data from "../data.js";
 import Product from "../models/productModel.js";
 
 const productRouter = express.Router();

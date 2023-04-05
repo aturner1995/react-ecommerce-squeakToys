@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
+import stripeRouter from './routes/stripe.js'
+import cors from 'cors';
 
 
 dotenv.config();
@@ -10,16 +12,18 @@ dotenv.config();
 mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log("Connected to DB")
 })
-.catch((err) => {
-    console.log(err);
-})
+    .catch((err) => {
+        console.log(err);
+    })
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/seed', seedRouter);
-app.use('/api/products', productRouter)
+app.use('/api/products', productRouter);
+app.use('/api/stripe', stripeRouter);
+app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 

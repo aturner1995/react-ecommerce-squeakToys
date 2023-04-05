@@ -9,8 +9,9 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
+} from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
+
 
 const persistConfig = {
   key: "root",

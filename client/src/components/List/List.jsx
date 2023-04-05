@@ -5,7 +5,6 @@ import { Row, Col } from 'react-bootstrap';
 import useFetch from "../../Hooks/useFetch";
 
 const List = ({ catId, maxPrice, sort, subCat }) => {
-    console.log(subCat);
     let filterUrl ='';
     let sortUrl ='';
 

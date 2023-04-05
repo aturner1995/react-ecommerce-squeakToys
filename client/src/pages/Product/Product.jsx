@@ -26,8 +26,6 @@ const Product = () => {
     return <p>Loading...</p>
   }
 
-  console.log(data);
-
   return (
     <>
       <Container className='product my-5 text-center'>

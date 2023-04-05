@@ -12,7 +12,7 @@ const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
   const notify = () => toast.success(`${item.name} Added to Cart`);
   return (
-    <Card style={{ width: '18rem' }} className='grow'>
+    <Card style={{ width: '16rem' }} className='grow'>
       <Link to={`/product/${item._id}`}>
         <div className="image">
           <Card.Img variant="top" src={item.img} className='mainImage' />

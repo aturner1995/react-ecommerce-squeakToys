@@ -18,15 +18,11 @@ clone or fork the repo and run npm install + npm start
 
 ## Usage ⚙️
 * To run the program - npm start
-* Deployed URL - https://afternoon-fortress-21043.herokuapp.com/
-![image](https://user-images.githubusercontent.com/120421650/229385557-dcf1f61f-773a-43ee-b7ba-8af669b24b32.png)
-
+* Deployed URL - https://squeaktoys.herokuapp.com/
+![image](https://user-images.githubusercontent.com/120421650/230504338-3dea4c96-d269-4cc9-a0d5-c3ac4a0610c4.png)
 
 ## Contribution 🙏
 Please email the repo user for instructions
-
-## Testing ✔️
-NA
 
 ## Questions ❓
 * For any questions releated to this repo please [**Email**](mailto:aaturner1995@gmail.com) me.

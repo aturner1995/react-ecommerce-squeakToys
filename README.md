@@ -4,7 +4,7 @@
 [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
 
 ## Description
-A REACT full stack ecommerce application using react boostrap, mongodb, and Stripe payment processing.
+A REACT full stack ecommerce application using react bootstrap, mongodb, and Stripe payment processing.
 
 ## Table of Contents
 * [Installation](#installation)
